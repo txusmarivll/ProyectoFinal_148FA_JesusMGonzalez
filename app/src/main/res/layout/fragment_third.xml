@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="@+id/bModificar"
         app:layout_constraintTop_toBottomOf="@+id/bModificar" />
 
-    <TextView
+    <EditText
         android:id="@+id/tvMedio"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -40,7 +40,7 @@
         app:layout_constraintStart_toStartOf="@+id/etdFechaVisionado"
         app:layout_constraintTop_toBottomOf="@+id/etdFechaVisionado" />
 
-    <TextView
+    <EditText
         android:id="@+id/tvGenero"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -64,7 +64,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitulo" />
 
-    <TextView
+    <EditText
         android:id="@+id/tvTitulo"
         android:layout_width="0dp"
         android:layout_height="0dp"

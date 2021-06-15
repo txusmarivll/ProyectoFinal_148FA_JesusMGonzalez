@@ -22,17 +22,18 @@ class ThirdFragment : Fragment() {
 
         setHasOptionsMenu(true) // ESTA LINEA PUESTA PARA MODIFICAR EL MENU (EN LOS FRAGMENTOS)
 
-        val tvTitulo:TextView = view.findViewById(R.id.tvTitulo)
+        val tvTitulo:EditText = view.findViewById(R.id.tvTitulo)
         val etnAnyo:EditText = view.findViewById(R.id.etnAnyo)
-        val tvGenero:TextView = view.findViewById(R.id.tvGenero)
+        val tvGenero:EditText = view.findViewById(R.id.tvGenero)
         val etdFechaVisionado:EditText = view.findViewById(R.id.etdFechaVisionado)
         val etnPuntuacion:EditText = view.findViewById(R.id.etnPuntuacion)
-        val tvMedio:TextView = view.findViewById(R.id.tvMedio)
+        val tvMedio:EditText = view.findViewById(R.id.tvMedio)
         val bInsertar:Button = view.findViewById(R.id.bInsertar)
         val bModificar:Button = view.findViewById(R.id.bModificar)
         val bEliminar:Button = view.findViewById(R.id.bEliminar)
 
         val id = arguments?.getInt("posicion") ?:-1
+        lateinit var miPeliculas:Peliculas
 
         if(id == -1){
             bModificar.isEnabled = false
@@ -40,17 +41,19 @@ class ThirdFragment : Fragment() {
             activity?.setTitle("Insertar")
         }
         else{
+
             bInsertar.isEnabled = false
             activity?.setTitle("Modificar")
             (activity as MainActivity).miVM.buscarPorId(id)
             (activity as MainActivity).miVM.miPeliculas.observe(activity as MainActivity){
                 it?.let {
-                    tvTitulo.text = (it.titulo)
+                    miPeliculas = it
+                    tvTitulo.setText(it.titulo)
                     etnAnyo.setText(it.anyo)
-                    tvGenero.text = (it.genero)
+                    tvGenero.setText(it.genero)
                     etdFechaVisionado.setText(it.fechaVisionado)
                     etnPuntuacion.setText(it.puntuacion)
-                    tvMedio.text = (it.medio)
+                    tvMedio.setText(it.medio)
                 }
             }
 
@@ -67,8 +70,8 @@ class ThirdFragment : Fragment() {
         }
 
         bEliminar.setOnClickListener {
-            (activity as MainActivity).miVM.borrar(Peliculas(id,tvTitulo.text.toString()
-                ,etnAnyo.text.toString().toInt(),tvGenero.text.toString(),
+            (activity as MainActivity).miVM.borrar(Peliculas(id,tvTitulo.text.toString(),
+                etnAnyo.text.toString().toInt(),tvGenero.text.toString(),
                 etdFechaVisionado.text.toString(),etnPuntuacion.text.toString().toInt(),
                 tvMedio.text.toString()))
         }

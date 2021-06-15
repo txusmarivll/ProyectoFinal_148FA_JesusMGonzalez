@@ -7,7 +7,7 @@ import java.lang.IllegalArgumentException
 class VM(private val miRepositorio:Repositorio):ViewModel() {
     var lista: LiveData<List<Peliculas>> = miRepositorio.listaPeliculas.asLiveData()
 
-    lateinit var miPeliculas:LiveData<Peliculas>
+    lateinit var miPeliculas :LiveData<Peliculas>
 
     fun insertar(miPeliculas: Peliculas) = viewModelScope.launch{
         miRepositorio.insertar(miPeliculas)

@@ -18,7 +18,7 @@ class Adaptador(var listaPeliculas: List<Peliculas>, val actividad: Activity):Re
         var tvFechaVisionado: TextView
         var tvPuntuacion: TextView
         var tvMedio: TextView
-        var id:Int
+        var id:Int = 0
 
         init {
             tvTitulo = v.findViewById(R.id.item_tvTitulo)
